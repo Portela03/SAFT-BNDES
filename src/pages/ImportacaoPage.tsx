@@ -7,6 +7,10 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 
+function fmt(n: number) {
+  return (n ?? 0).toLocaleString('pt-BR')
+}
+
 export default function ImportacaoPage() {
   const navigate = useNavigate()
   const vm = useImportViewModel()
@@ -109,22 +113,40 @@ export default function ImportacaoPage() {
       </div>
 
       {vm.loading && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center gap-5">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-700 shrink-0" />
-          <div>
-            <p className="text-sm font-medium text-gray-700">Importando dados, aguarde...</p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              Este processo pode levar alguns minutos dependendo do tamanho do arquivo
-            </p>
+        <div className="bg-white rounded-xl shadow-sm border border-blue-100 p-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-700 shrink-0" />
+            <div>
+              <p className="text-sm font-semibold text-gray-800">Importando dados, aguarde...</p>
+              <p className="text-xs text-gray-400 mt-0.5">
+                Este processo pode levar alguns minutos dependendo do tamanho do arquivo
+              </p>
+            </div>
+          </div>
+          <div className="w-full bg-gray-100 rounded-full h-1.5">
+            <div className="bg-blue-600 h-1.5 rounded-full animate-pulse w-3/4" />
           </div>
         </div>
       )}
 
       {vm.error && !vm.loading && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
-          <div>
-            <p className="text-sm font-semibold text-red-700">Erro na importação</p>
-            <p className="text-sm text-red-600 mt-0.5">{vm.error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-xl p-5 space-y-3">
+          <div className="flex items-start gap-3">
+            <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-red-700">Erro na importação</p>
+              <p className="text-sm text-red-600 mt-0.5">{vm.error}</p>
+            </div>
+          </div>
+          <div className="flex gap-2 pl-8">
+            <button
+              onClick={vm.clearResult}
+              className="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg transition"
+            >
+              Tentar novamente
+            </button>
           </div>
         </div>
       )}
@@ -132,10 +154,17 @@ export default function ImportacaoPage() {
       {vm.result && !vm.loading && (
         <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6 space-y-5">
           <div className="flex items-center gap-3">
+            <div className="bg-green-100 rounded-full p-2">
+              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Importação concluída!</h3>
-              {vm.result.message && (
-                <p className="text-sm text-gray-500 mt-0.5">{vm.result.message}</p>
+              {vm.result.imported === 0 && vm.result.skipped > 0 && (
+                <p className="text-sm text-yellow-600 mt-0.5">
+                  Nenhum registro novo — todos os dados já estavam no banco.
+                </p>
               )}
             </div>
           </div>
@@ -143,10 +172,10 @@ export default function ImportacaoPage() {
           <div className="grid grid-cols-3 divide-x divide-gray-100 bg-gray-50 rounded-xl">
             <div className="text-center py-4 px-2">
               <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Total processado
+                Total lido
               </p>
               <p className="text-2xl font-bold text-blue-700 mt-1">
-                {(vm.result.totalImported + vm.result.totalSkipped).toLocaleString('pt-BR')}
+                {fmt(vm.result.total)}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">registros</p>
             </div>
@@ -155,7 +184,7 @@ export default function ImportacaoPage() {
                 Importados
               </p>
               <p className="text-2xl font-bold text-green-600 mt-1">
-                {vm.result.totalImported.toLocaleString('pt-BR')}
+                {fmt(vm.result.imported)}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">novos registros</p>
             </div>
@@ -164,7 +193,7 @@ export default function ImportacaoPage() {
                 Ignorados
               </p>
               <p className="text-2xl font-bold text-yellow-600 mt-1">
-                {vm.result.totalSkipped.toLocaleString('pt-BR')}
+                {fmt(vm.result.skipped)}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">duplicatas</p>
             </div>

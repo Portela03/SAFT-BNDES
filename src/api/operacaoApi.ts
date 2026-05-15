@@ -45,8 +45,8 @@ export const topSetores = (limit = 10): Promise<TopSetor[]> =>
 export const importarCsv = (file: File): Promise<ImportResult> => {
   const form = new FormData()
   form.append('file', file)
-  return axios
-    .post<ImportResult>('/api/carga', form, {
+  return api
+    .post<ImportResult>('/carga', form, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then((r) => r.data)

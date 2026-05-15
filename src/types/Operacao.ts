@@ -61,9 +61,9 @@ export interface TopSetor {
 
 
 export interface ImportResult {
-  totalImported: number
-  totalSkipped: number
-  message: string
+  total: number
+  imported: number
+  skipped: number
 }
 
 
