@@ -28,6 +28,11 @@ export const criarOperacao = (data: OperacaoCreateRequest): Promise<Operacao> =>
 export const atualizarOperacao = (id: number, data: OperacaoCreateRequest): Promise<Operacao> =>
   api.put<Operacao>(`/operacoes/${id}`, data).then((r) => r.data)
 
+
+export const warmupApi = (): void => {
+  api.get('/operacoes', { params: { page: 0, size: 1 } }).catch(() => undefined)
+}
+
 export const deletarOperacao = (id: number): Promise<void> =>
   api.delete(`/operacoes/${id}`).then(() => undefined)
 

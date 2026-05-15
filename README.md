@@ -200,6 +200,13 @@ O frontend consome a API REST do projeto [SAFT-BNDES-API](../SAFT-BNDES-API) (Sp
 
 ## Deploy
 
+| Ambiente | URL |
+|---|---|
+| **Frontend (Vercel)** | [https://saft-bndes.vercel.app](https://saft-bndes.vercel.app/) |
+| **Backend (Render)** | [https://saft-bndes-api.onrender.com](https://saft-bndes-api.onrender.com) |
+
+> **Atenção:** A URL do backend pode mudar caso o plano gratuito do Render expire. Nesse caso, atualize a variável `VITE_API_URL` na Vercel.
+
 A aplicação está configurada para deploy na **Vercel**. O arquivo `vercel.json` já inclui a reescrita de rotas necessária para o React Router funcionar em modo SPA:
 
 ```json
