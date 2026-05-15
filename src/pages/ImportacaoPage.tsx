@@ -44,7 +44,6 @@ export default function ImportacaoPage() {
 
             {vm.file ? (
               <div className="space-y-1">
-                <div className="text-3xl">📄</div>
                 <p className="text-sm font-semibold text-blue-700">{vm.file.name}</p>
                 <p className="text-xs text-gray-400">{formatSize(vm.file.size)}</p>
                 <button
@@ -57,7 +56,6 @@ export default function ImportacaoPage() {
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="text-4xl text-blue-400">📁</div>
                 <p className="text-sm text-gray-600">
                   Arraste o arquivo CSV aqui ou clique para selecionar
                 </p>
@@ -124,7 +122,6 @@ export default function ImportacaoPage() {
 
       {vm.error && !vm.loading && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
-          <span className="text-red-500 text-xl shrink-0">❌</span>
           <div>
             <p className="text-sm font-semibold text-red-700">Erro na importação</p>
             <p className="text-sm text-red-600 mt-0.5">{vm.error}</p>
@@ -135,7 +132,6 @@ export default function ImportacaoPage() {
       {vm.result && !vm.loading && (
         <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6 space-y-5">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">✅</span>
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Importação concluída!</h3>
               {vm.result.message && (
