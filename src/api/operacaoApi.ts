@@ -30,7 +30,7 @@ export const atualizarOperacao = (id: number, data: OperacaoCreateRequest): Prom
 
 
 export const warmupApi = (): void => {
-  api.get('/operacoes', { params: { page: 0, size: 1 } }).catch(() => undefined)
+  api.get('/health').catch(() => undefined)
 }
 
 export const deletarOperacao = (id: number): Promise<void> =>
