@@ -62,7 +62,7 @@ export default function OperacaoDetalhesPage() {
     return (
       <div className="p-4 sm:p-6 md:p-8 bg-gray-50 min-h-screen flex items-center justify-center">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-10 max-w-md w-full text-center space-y-4">
-          <div className="text-5xl">{notFound ? '❌' : '⚠️'}</div>
+
           <h2 className="text-xl font-bold text-gray-900">
             {notFound ? 'Operação não encontrada' : 'Erro ao carregar'}
           </h2>

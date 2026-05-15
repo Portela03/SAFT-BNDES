@@ -1,4 +1,3 @@
-// ─── Domain entity ───────────────────────────────────────────────────────────
 export interface Operacao {
   id: number
   bndesId: string
@@ -9,7 +8,7 @@ export interface Operacao {
   municipio: string
   municipioCodigo: string
   numeroDoContrato: string
-  dataDaContratacao: string      // ISO-8601 string
+  dataDaContratacao: string
   valorContratadoReais: number
   valorDesembolsadoReais: number
   fonteDeRecursoDesembolsos: string
@@ -38,19 +37,18 @@ export interface Operacao {
   situacaoDoContrato: string
 }
 
-// ─── Request DTO ─────────────────────────────────────────────────────────────
+
 export type OperacaoCreateRequest = Omit<Operacao, 'id'>
 
-// ─── Paged response ──────────────────────────────────────────────────────────
 export interface PagedResponse<T> {
   content: T[]
   totalElements: number
   totalPages: number
-  number: number       // current page (0-based)
+  number: number
   size: number
 }
 
-// ─── Insight responses ───────────────────────────────────────────────────────
+
 export interface InsightUfTotal {
   uf: string
   total: number
@@ -61,14 +59,14 @@ export interface TopSetor {
   total: number
 }
 
-// ─── Import result ───────────────────────────────────────────────────────────
+
 export interface ImportResult {
   totalImported: number
   totalSkipped: number
   message: string
 }
 
-// ─── Filter params for the list endpoint ─────────────────────────────────────
+
 export interface OperacaoFiltros {
   uf?: string
   setor?: string
