@@ -24,7 +24,7 @@ export default function NovaOperacaoPage() {
   const { submitting, toast, handleSubmit, clearToast } = useNovaOperacaoViewModel()
 
   return (
-    <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {toast && <Toast message={toast.message} type={toast.type} onClose={clearToast} />}
 
       <div>

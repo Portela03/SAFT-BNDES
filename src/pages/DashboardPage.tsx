@@ -42,7 +42,7 @@ export default function DashboardPage() {
   const vm = useInsightsViewModel()
 
   return (
-    <div className="p-8 space-y-8 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-8 bg-gray-50 min-h-screen">
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard de Financiamentos BNDES</h1>

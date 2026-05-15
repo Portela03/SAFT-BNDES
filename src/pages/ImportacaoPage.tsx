@@ -12,7 +12,7 @@ export default function ImportacaoPage() {
   const vm = useImportViewModel()
 
   return (
-    <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Importar Dados do BNDES</h1>

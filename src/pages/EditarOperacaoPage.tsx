@@ -12,7 +12,7 @@ export default function EditarOperacaoPage() {
   // ── Loading skeleton ────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="p-8 space-y-6 bg-gray-50 min-h-screen animate-pulse">
+      <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen animate-pulse">
         <div className="h-7 w-56 bg-gray-200 rounded" />
         <div className="h-4 w-40 bg-gray-200 rounded" />
         {[1, 2, 3, 4].map((i) => (
@@ -32,7 +32,7 @@ export default function EditarOperacaoPage() {
   // ── Load error ──────────────────────────────────────────────────────────
   if (loadError || !initialData) {
     return (
-      <div className="p-8 bg-gray-50 min-h-screen flex items-center justify-center">
+      <div className="p-4 sm:p-6 md:p-8 bg-gray-50 min-h-screen flex items-center justify-center">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-10 max-w-md w-full text-center space-y-4">
           <div className="text-5xl">⚠️</div>
           <h2 className="text-xl font-bold text-gray-900">Operação não encontrada</h2>
@@ -50,7 +50,7 @@ export default function EditarOperacaoPage() {
 
   // ── View ────────────────────────────────────────────────────────────────
   return (
-    <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {toast && <Toast message={toast.message} type={toast.type} onClose={clearToast} />}
 
       <div>

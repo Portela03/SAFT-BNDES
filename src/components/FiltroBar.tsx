@@ -28,10 +28,10 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-wrap gap-4 items-end">
       {/* UF select */}
-      <div>
+      <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Estado (UF)</label>
         <select
-          className={`${inputCls} w-32`}
+          className={`${inputCls} w-full sm:w-32`}
           value={values.uf}
           onChange={(e) => set('uf', e.target.value)}
         >
@@ -45,10 +45,10 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
       </div>
 
       {/* Setor BNDES */}
-      <div>
+      <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Setor BNDES</label>
         <input
-          className={`${inputCls} w-52`}
+          className={`${inputCls} w-full sm:w-52`}
           placeholder="Ex: Indústria"
           value={values.setor}
           onChange={(e) => set('setor', e.target.value)}
@@ -57,12 +57,12 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
       </div>
 
       {/* Valor mínimo */}
-      <div>
+      <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Valor mínimo (R$)</label>
         <input
           type="number"
           min={0}
-          className={`${inputCls} w-44`}
+          className={`${inputCls} w-full sm:w-44`}
           placeholder="Ex: 100000"
           value={values.valorMinimo}
           onChange={(e) => set('valorMinimo', e.target.value)}
@@ -71,18 +71,18 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
       </div>
 
       {/* Actions */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 w-full sm:w-auto">
         <button
           onClick={onFilter}
           disabled={loading}
-          className="bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white px-6 py-2 rounded-lg text-sm font-medium transition"
+          className="flex-1 sm:flex-none bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white px-6 py-2 rounded-lg text-sm font-medium transition"
         >
           Filtrar
         </button>
         <button
           onClick={onClear}
           disabled={loading}
-          className="border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-60 px-4 py-2 rounded-lg text-sm font-medium transition"
+          className="flex-1 sm:flex-none border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-60 px-4 py-2 rounded-lg text-sm font-medium transition"
         >
           Limpar
         </button>

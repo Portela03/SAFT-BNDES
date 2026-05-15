@@ -9,9 +9,9 @@ export default function OperacoesPage() {
   const vm = useOperacoesViewModel()
 
   return (
-    <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Operações de Financiamento</h1>
           <p className="text-sm text-gray-500 mt-0.5">

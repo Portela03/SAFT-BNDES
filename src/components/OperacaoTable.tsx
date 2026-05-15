@@ -38,6 +38,7 @@ interface Props {
 export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onExcluir }: Props) {
   return (
     <div className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="overflow-x-auto">
       <table className="w-full text-sm">
         {/* Header */}
         <thead>
@@ -141,6 +142,7 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
           )}
         </tbody>
       </table>
+      </div>
     </div>
   )
 }

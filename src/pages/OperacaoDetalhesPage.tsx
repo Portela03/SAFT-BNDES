@@ -32,7 +32,7 @@ export default function OperacaoDetalhesPage() {
   // ── Loading skeleton ──────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+      <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
         <div className="flex items-center gap-3 animate-pulse">
           <div className="h-4 w-24 bg-gray-200 rounded" />
           <div className="h-4 w-px bg-gray-300" />
@@ -62,7 +62,7 @@ export default function OperacaoDetalhesPage() {
   // ── 404 / error ───────────────────────────────────────────────────────────
   if (notFound || error) {
     return (
-      <div className="p-8 bg-gray-50 min-h-screen flex items-center justify-center">
+      <div className="p-4 sm:p-6 md:p-8 bg-gray-50 min-h-screen flex items-center justify-center">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-10 max-w-md w-full text-center space-y-4">
           <div className="text-5xl">{notFound ? '❌' : '⚠️'}</div>
           <h2 className="text-xl font-bold text-gray-900">
@@ -88,7 +88,7 @@ export default function OperacaoDetalhesPage() {
 
   // ── View ──────────────────────────────────────────────────────────────────
   return (
-    <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500">
         <button
