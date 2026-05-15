@@ -1,14 +1,12 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import type { OperacaoCreateRequest } from '../types/Operacao'
 
-// ── Constants ──────────────────────────────────────────────────────────────
 const UFS = [
   'AC','AL','AM','AP','BA','CE','DF','ES','GO','MA',
   'MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN',
   'RO','RR','RS','SC','SE','SP','TO',
 ]
 
-// ── Prop types ─────────────────────────────────────────────────────────────
 interface Props {
   initialData: OperacaoCreateRequest
   onSubmit: (data: OperacaoCreateRequest) => Promise<void> | void
@@ -16,7 +14,6 @@ interface Props {
   onCancel: () => void
 }
 
-// ── Validation ────────────────────────────────────────────────────────────
 type Errors = Partial<Record<keyof OperacaoCreateRequest, string>>
 
 function validate(form: OperacaoCreateRequest): Errors {
@@ -27,7 +24,7 @@ function validate(form: OperacaoCreateRequest): Errors {
   return errors
 }
 
-// ── Sub-components ─────────────────────────────────────────────────────────
+
 function Field({
   label,
   required,
@@ -62,7 +59,6 @@ function SectionCard({ title, children }: { title: string; children: React.React
   )
 }
 
-// ── Form component ─────────────────────────────────────────────────────────
 export default function OperacaoForm({ initialData, onSubmit, submitting, onCancel }: Props) {
   const [form, setForm] = useState<OperacaoCreateRequest>(initialData)
   const [errors, setErrors] = useState<Errors>({})
@@ -93,7 +89,7 @@ export default function OperacaoForm({ initialData, onSubmit, submitting, onCanc
 
   return (
     <form onSubmit={handleFormSubmit} noValidate className="space-y-6">
-      {/* ── Seção 1: Dados da Empresa ──────────────────────────────────── */}
+
       <SectionCard title="Dados da Empresa">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Nome da empresa" required error={errors.cliente}>
@@ -150,7 +146,7 @@ export default function OperacaoForm({ initialData, onSubmit, submitting, onCanc
         </div>
       </SectionCard>
 
-      {/* ── Seção 2: Dados do Financiamento ──────────────────────────── */}
+
       <SectionCard title="Dados do Financiamento">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Valor Contratado (R$)" required error={errors.valorContratadoReais}>
@@ -232,7 +228,6 @@ export default function OperacaoForm({ initialData, onSubmit, submitting, onCanc
         </div>
       </SectionCard>
 
-      {/* ── Seção 3: Condições do Contrato ───────────────────────────── */}
       <SectionCard title="Condições do Contrato">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Situação do Contrato" error={errors.situacaoDoContrato}>
@@ -271,7 +266,7 @@ export default function OperacaoForm({ initialData, onSubmit, submitting, onCanc
         </div>
       </SectionCard>
 
-      {/* ── Seção 4: Informações Adicionais ──────────────────────────── */}
+
       <SectionCard title="Informações Adicionais">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="ID BNDES" error={errors.bndesId}>
@@ -386,7 +381,7 @@ export default function OperacaoForm({ initialData, onSubmit, submitting, onCanc
         </Field>
       </SectionCard>
 
-      {/* ── Actions ───────────────────────────────────────────────────── */}
+
       <div className="flex items-center gap-3 justify-end">
         <button
           type="button"

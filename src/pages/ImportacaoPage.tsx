@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import { useImportViewModel } from '../viewmodels/useImportViewModel'
 
 function formatSize(bytes: number): string {
@@ -13,7 +13,6 @@ export default function ImportacaoPage() {
 
   return (
     <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Importar Dados do BNDES</h1>
         <p className="text-sm text-gray-500 mt-0.5">
@@ -21,13 +20,10 @@ export default function ImportacaoPage() {
         </p>
       </div>
 
-      {/* ── Cards side by side ──────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Card 1 — Upload CSV */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
           <h2 className="text-lg font-semibold text-gray-700">Upload de Arquivo CSV</h2>
 
-          {/* Drop zone */}
           <div
             onDragOver={vm.handleDragOver}
             onDragLeave={vm.handleDragLeave}
@@ -81,7 +77,6 @@ export default function ImportacaoPage() {
           </button>
         </div>
 
-        {/* Card 2 — CKAN / Portal BNDES */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-700">Importar do Portal BNDES</h2>
 
@@ -115,7 +110,6 @@ export default function ImportacaoPage() {
         </div>
       </div>
 
-      {/* ── Loading spinner ─────────────────────────────────────────── */}
       {vm.loading && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center gap-5">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-700 shrink-0" />
@@ -128,7 +122,6 @@ export default function ImportacaoPage() {
         </div>
       )}
 
-      {/* ── Error banner ────────────────────────────────────────────── */}
       {vm.error && !vm.loading && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
           <span className="text-red-500 text-xl shrink-0">❌</span>
@@ -139,10 +132,8 @@ export default function ImportacaoPage() {
         </div>
       )}
 
-      {/* ── Result card ─────────────────────────────────────────────── */}
       {vm.result && !vm.loading && (
         <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6 space-y-5">
-          {/* Title */}
           <div className="flex items-center gap-3">
             <span className="text-3xl">✅</span>
             <div>
@@ -153,7 +144,6 @@ export default function ImportacaoPage() {
             </div>
           </div>
 
-          {/* Stats grid */}
           <div className="grid grid-cols-3 divide-x divide-gray-100 bg-gray-50 rounded-xl">
             <div className="text-center py-4 px-2">
               <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -184,7 +174,6 @@ export default function ImportacaoPage() {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-3">
             <button
               onClick={() => navigate('/operacoes')}

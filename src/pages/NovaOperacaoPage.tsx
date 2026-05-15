@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import { useNovaOperacaoViewModel } from '../viewmodels/useNovaOperacaoViewModel'
 import OperacaoForm from '../components/OperacaoForm'
 import Toast from '../components/Toast'

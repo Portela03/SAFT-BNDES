@@ -1,4 +1,4 @@
-import {
+﻿import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts'
 import { useInsightsViewModel } from '../viewmodels/useInsightsViewModel'
@@ -9,13 +9,11 @@ const BRL = (v: number) =>
 const BRL_BI = (v: number) =>
   `R$ ${(v / 1_000_000_000).toFixed(2).replace('.', ',')} bi`
 
-// Gradient colours for the UF chart (blue-700 → blue-300)
 const UF_COLORS = [
   '#1d4ed8', '#2563eb', '#3b82f6', '#4b91f7', '#60a5fa',
   '#74b3fb', '#93c5fd', '#a8d4fe', '#bfdbfe', '#d0e8ff',
 ]
 
-// ─── Skeleton helpers ──────────────────────────────────────────────────────────
 function SkeletonCard() {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center gap-4 animate-pulse">
@@ -37,26 +35,22 @@ function SkeletonChart() {
   )
 }
 
-// ─── View ──────────────────────────────────────────────────────────────────────
 export default function DashboardPage() {
   const vm = useInsightsViewModel()
 
   return (
     <div className="p-4 sm:p-6 md:p-8 space-y-8 bg-gray-50 min-h-screen">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard de Financiamentos BNDES</h1>
         <p className="text-sm text-gray-500 mt-1">Dados do Portal de Dados Abertos do BNDES</p>
       </div>
 
-      {/* Error banner */}
       {vm.error && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
           {vm.error}
         </div>
       )}
 
-      {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {vm.loading ? (
           <>
@@ -91,7 +85,6 @@ export default function DashboardPage() {
         )}
       </div>
 
-      {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {vm.loading ? (
           <>
@@ -100,7 +93,6 @@ export default function DashboardPage() {
           </>
         ) : (
           <>
-            {/* Gráfico 1 — Top 5 Setores (horizontal BarChart) */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-semibold text-gray-700 mb-5">
                 Top 5 Setores Mais Financiados
@@ -131,7 +123,6 @@ export default function DashboardPage() {
               </ResponsiveContainer>
             </div>
 
-            {/* Gráfico 2 — Total por UF (vertical BarChart, top 10) */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h2 className="text-lg font-semibold text-gray-700 mb-5">
                 Financiamento por Estado (Top 10)
@@ -165,7 +156,6 @@ export default function DashboardPage() {
   )
 }
 
-// ─── Sub-components (presentation only) ───────────────────────────────────────
 interface SummaryCardProps {
   icon: string
   iconBg: string

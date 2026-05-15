@@ -1,5 +1,5 @@
-interface Props {
-  page: number           // 0-based
+﻿interface Props {
+  page: number
   totalPages: number
   totalElements: number
   size: number
@@ -35,7 +35,6 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 border-t border-gray-200 bg-white rounded-b-xl">
-      {/* Info text */}
       <p className="text-sm text-gray-500 text-center sm:text-left">
         Mostrando{' '}
         <span className="font-medium text-gray-700">{from.toLocaleString('pt-BR')}</span>
@@ -46,9 +45,7 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
         {' resultados'}
       </p>
 
-      {/* Buttons */}
       <div className="flex items-center justify-center gap-1">
-        {/* Previous */}
         <button
           disabled={page === 0}
           onClick={() => onPageChange(page - 1)}
@@ -57,7 +54,6 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
           ← Anterior
         </button>
 
-        {/* Page numbers — hidden on mobile */}
         <div className="hidden sm:flex items-center gap-1">
           {items.map((item, idx) =>
             item === '...' ? (
@@ -80,12 +76,10 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
           )}
         </div>
 
-        {/* Page indicator — mobile only */}
         <span className="sm:hidden px-3 text-sm text-gray-600 font-medium">
           {page + 1} / {totalPages}
         </span>
 
-        {/* Next */}
         <button
           disabled={page + 1 >= totalPages}
           onClick={() => onPageChange(page + 1)}

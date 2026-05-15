@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+﻿import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import DashboardPage from './pages/DashboardPage'
@@ -14,7 +14,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="flex bg-gray-50 min-h-screen">
-        {/* Mobile backdrop */}
         {sidebarOpen && (
           <div
             className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -25,7 +24,6 @@ export default function App() {
         <Navbar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         <div className="flex-1 flex flex-col md:ml-64 min-h-screen">
-          {/* Mobile top bar */}
           <header className="md:hidden sticky top-0 z-30 bg-white border-b border-gray-200 flex items-center gap-3 px-4 py-3 shrink-0">
             <button
               onClick={() => setSidebarOpen(true)}

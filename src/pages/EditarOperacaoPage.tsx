@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+﻿import { useNavigate, useParams } from 'react-router-dom'
 import { useEditarOperacaoViewModel } from '../viewmodels/useEditarOperacaoViewModel'
 import OperacaoForm from '../components/OperacaoForm'
 import Toast from '../components/Toast'
@@ -9,7 +9,6 @@ export default function EditarOperacaoPage() {
   const { initialData, loading, loadError, submitting, toast, handleSubmit, clearToast } =
     useEditarOperacaoViewModel()
 
-  // ── Loading skeleton ────────────────────────────────────────────────────
   if (loading) {
     return (
       <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen animate-pulse">
@@ -29,7 +28,6 @@ export default function EditarOperacaoPage() {
     )
   }
 
-  // ── Load error ──────────────────────────────────────────────────────────
   if (loadError || !initialData) {
     return (
       <div className="p-4 sm:p-6 md:p-8 bg-gray-50 min-h-screen flex items-center justify-center">
@@ -48,7 +46,6 @@ export default function EditarOperacaoPage() {
     )
   }
 
-  // ── View ────────────────────────────────────────────────────────────────
   return (
     <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
       {toast && <Toast message={toast.message} type={toast.type} onClose={clearToast} />}

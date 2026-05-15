@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+﻿import { useCallback, useEffect, useState } from 'react'
 import { listarOperacoes, deletarOperacao } from '../api/operacaoApi'
 import type { Operacao, OperacaoFiltros } from '../types/Operacao'
 
-// ─── Types exported for the View ─────────────────────────────────────────────
 
 export interface FiltroValues {
   uf: string
@@ -29,7 +28,6 @@ export interface OperacoesViewModel {
   handleDeleteConfirm: () => Promise<void>
 }
 
-// ─── ViewModel ────────────────────────────────────────────────────────────────
 
 export function useOperacoesViewModel(): OperacoesViewModel {
   const [operacoes, setOperacoes] = useState<Operacao[]>([])

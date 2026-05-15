@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { totalPorUf, topSetores, listarOperacoes } from '../api/operacaoApi'
 import type { InsightUfTotal, TopSetor } from '../types/Operacao'
 
@@ -6,8 +6,8 @@ export interface InsightsViewModel {
   totalOperacoes: number
   estadosAtendidos: number
   setoresAtivos: number
-  ufData: InsightUfTotal[]      // top 10 UFs por total, já ordenados
-  setorData: TopSetor[]         // top 5 setores
+  ufData: InsightUfTotal[]
+  setorData: TopSetor[]
   loading: boolean
   error: string | null
 }
@@ -26,7 +26,6 @@ export function useInsightsViewModel(): InsightsViewModel {
       listarOperacoes({ page: 0, size: 1 }),
     ])
       .then(([ufs, setores, page]) => {
-        // Sort UFs descending by total, keep top 10
         const top10 = [...ufs]
           .sort((a, b) => b.total - a.total)
           .slice(0, 10)

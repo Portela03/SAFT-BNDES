@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom'
+﻿import { NavLink, Outlet } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'Dashboard', end: true },
@@ -9,7 +9,6 @@ const links = [
 export default function Layout() {
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
       <aside className="w-64 bg-blue-900 flex flex-col shrink-0">
         <div className="px-6 py-5 border-b border-blue-800">
           <h1 className="text-white font-bold text-lg leading-tight">SAFT-BNDES</h1>
@@ -35,7 +34,6 @@ export default function Layout() {
         </nav>
       </aside>
 
-      {/* Main */}
       <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>

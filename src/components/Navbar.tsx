@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom'
+﻿import { NavLink } from 'react-router-dom'
 
 const navItems = [
-  { to: '/', icon: '📊', label: 'Dashboard', end: true },
-  { to: '/operacoes', icon: '📋', label: 'Operações', end: true },
-  { to: '/operacoes/nova', icon: '➕', label: 'Nova Operação' },
-  { to: '/importacao', icon: '📤', label: 'Importar CSV' },
+  { to: '/', label: 'Dashboard', end: true },
+  { to: '/operacoes', label: 'Operações', end: true },
+  { to: '/operacoes/nova', label: 'Nova Operação' },
+  { to: '/importacao', label: 'Importar CSV' },
 ]
 
 interface Props {
@@ -18,7 +18,6 @@ export default function Navbar({ isOpen, onClose }: Props) {
       className={`fixed left-0 top-0 w-64 bg-blue-900 min-h-screen flex flex-col z-50 transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
     >
-      {/* Logo */}
       <div className="px-6 py-6 border-b border-blue-800">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
@@ -30,7 +29,6 @@ export default function Navbar({ isOpen, onClose }: Props) {
               <p className="text-blue-300 text-xs truncate">Financiamento Tecnológico</p>
             </div>
           </div>
-          {/* Close button — mobile only */}
           <button
             onClick={onClose}
             className="md:hidden text-blue-300 hover:text-white transition shrink-0"
@@ -43,9 +41,8 @@ export default function Navbar({ isOpen, onClose }: Props) {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {navItems.map(({ to, icon, label, end }) => (
+        {navItems.map(({ to, label, end }) => (
           <NavLink
             key={to}
             to={to}
@@ -59,13 +56,11 @@ export default function Navbar({ isOpen, onClose }: Props) {
               }`
             }
           >
-            <span className="text-base leading-none">{icon}</span>
             {label}
           </NavLink>
         ))}
       </nav>
 
-      {/* Footer */}
       <div className="px-6 py-4 border-t border-blue-800">
         <p className="text-blue-400 text-xs">Portal de Dados Abertos BNDES</p>
         <p className="text-blue-500 text-xs mt-0.5">© 2026 SAFT-BNDES</p>

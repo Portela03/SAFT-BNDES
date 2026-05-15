@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import { useDetalhesViewModel } from '../viewmodels/useDetalhesViewModel'
 
 const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -29,7 +29,6 @@ export default function OperacaoDetalhesPage() {
   const navigate = useNavigate()
   const { operacao, loading, notFound, error } = useDetalhesViewModel()
 
-  // ── Loading skeleton ──────────────────────────────────────────────────────
   if (loading) {
     return (
       <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
@@ -59,7 +58,6 @@ export default function OperacaoDetalhesPage() {
     )
   }
 
-  // ── 404 / error ───────────────────────────────────────────────────────────
   if (notFound || error) {
     return (
       <div className="p-4 sm:p-6 md:p-8 bg-gray-50 min-h-screen flex items-center justify-center">
@@ -86,10 +84,8 @@ export default function OperacaoDetalhesPage() {
 
   if (!operacao) return null
 
-  // ── View ──────────────────────────────────────────────────────────────────
   return (
     <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
-      {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500">
         <button
           onClick={() => navigate('/operacoes')}
@@ -101,9 +97,7 @@ export default function OperacaoDetalhesPage() {
         <span className="text-gray-900 font-medium">Detalhes #{operacao.id}</span>
       </nav>
 
-      {/* Main card */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
-        {/* Card header */}
         <div className="flex items-start justify-between gap-4 pb-4 border-b border-gray-100">
           <div>
             <h1 className="text-xl font-bold text-gray-900">{operacao.cliente}</h1>
@@ -118,7 +112,6 @@ export default function OperacaoDetalhesPage() {
           )}
         </div>
 
-        {/* Fields grid — 2 columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
           <Field label="ID do Sistema" value={operacao.id} />
           <Field label="ID BNDES" value={operacao.bndesId} />
@@ -173,7 +166,6 @@ export default function OperacaoDetalhesPage() {
           <Field label="Tipo de Excepcionalidade" value={operacao.tipoDeExcepcionalidade} />
         </div>
 
-        {/* Descrição do Projeto (full width) */}
         {operacao.descricaoDoProjeto && (
           <div className="pt-4 border-t border-gray-100">
             <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
@@ -183,7 +175,6 @@ export default function OperacaoDetalhesPage() {
           </div>
         )}
 
-        {/* Footer buttons */}
         <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
           <button
             onClick={() => navigate('/operacoes')}
@@ -195,7 +186,7 @@ export default function OperacaoDetalhesPage() {
             onClick={() => navigate(`/operacoes/${operacao.id}/editar`)}
             className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
           >
-            ✏️ Editar
+            Editar
           </button>
         </div>
       </div>

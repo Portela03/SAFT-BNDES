@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import { useOperacoesViewModel } from '../viewmodels/useOperacoesViewModel'
 import FiltroBar from '../components/FiltroBar'
 import OperacaoTable from '../components/OperacaoTable'
@@ -10,7 +10,6 @@ export default function OperacoesPage() {
 
   return (
     <div className="p-4 sm:p-6 md:p-8 space-y-6 bg-gray-50 min-h-screen">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Operações de Financiamento</h1>
@@ -26,14 +25,12 @@ export default function OperacoesPage() {
         </button>
       </div>
 
-      {/* Error banner */}
       {vm.error && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
           {vm.error}
         </div>
       )}
 
-      {/* Filters */}
       <FiltroBar
         values={vm.filtroValues}
         onChange={vm.setFiltroValues}
@@ -42,7 +39,6 @@ export default function OperacoesPage() {
         loading={vm.loading}
       />
 
-      {/* Table + Pagination */}
       <div>
         <OperacaoTable
           operacoes={vm.operacoes}
@@ -60,7 +56,6 @@ export default function OperacoesPage() {
         />
       </div>
 
-      {/* Delete confirmation modal */}
       {vm.deleteId != null && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl">

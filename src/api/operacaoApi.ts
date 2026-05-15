@@ -1,4 +1,4 @@
-import axios from 'axios'
+﻿import axios from 'axios'
 import type {
   Operacao,
   OperacaoCreateRequest,
@@ -13,8 +13,6 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL ?? 'http://localhost:8080'}/api`,
   headers: { 'Content-Type': 'application/json' },
 })
-
-// ─── Operações ────────────────────────────────────────────────────────────────
 
 export const listarOperacoes = (
   filtros: OperacaoFiltros = {},
@@ -33,15 +31,11 @@ export const atualizarOperacao = (id: number, data: OperacaoCreateRequest): Prom
 export const deletarOperacao = (id: number): Promise<void> =>
   api.delete(`/operacoes/${id}`).then(() => undefined)
 
-// ─── Insights ─────────────────────────────────────────────────────────────────
-
 export const totalPorUf = (): Promise<InsightUfTotal[]> =>
   api.get<InsightUfTotal[]>('/insights/total-por-uf').then((r) => r.data)
 
 export const topSetores = (limit = 10): Promise<TopSetor[]> =>
   api.get<TopSetor[]>('/insights/top-setores', { params: { limit } }).then((r) => r.data)
-
-// ─── Importação ───────────────────────────────────────────────────────────────
 
 export const importarCsv = (file: File): Promise<ImportResult> => {
   const form = new FormData()

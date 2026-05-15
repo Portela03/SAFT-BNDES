@@ -1,4 +1,4 @@
-import type { Operacao } from '../types/Operacao'
+﻿import type { Operacao } from '../types/Operacao'
 
 const BRL = (v: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
@@ -12,7 +12,6 @@ function situacaoBadge(situacao: string): string {
   return 'bg-gray-100 text-gray-600'
 }
 
-// ─── Skeleton row (desktop) ───────────────────────────────────────────────────
 function SkeletonRow() {
   return (
     <tr className="animate-pulse">
@@ -25,7 +24,6 @@ function SkeletonRow() {
   )
 }
 
-// ─── Skeleton card (mobile) ───────────────────────────────────────────────────
 function SkeletonCard() {
   return (
     <div className="p-4 border-b border-gray-100 animate-pulse space-y-2">
@@ -42,7 +40,6 @@ function SkeletonCard() {
   )
 }
 
-// ─── Props ────────────────────────────────────────────────────────────────────
 interface Props {
   operacoes: Operacao[]
   loading: boolean
@@ -51,21 +48,17 @@ interface Props {
   onExcluir: (id: number) => void
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onExcluir }: Props) {
-  // ── Empty / loading state shared by both views ────────────────────────────
   const isEmpty = !loading && operacoes.length === 0
 
   return (
     <div className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
 
-      {/* ── MOBILE: card list (hidden on md+) ─────────────────────────────── */}
       <div className="md:hidden">
         {loading ? (
           Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={i} />)
         ) : isEmpty ? (
           <div className="px-4 py-16 text-center">
-            <span className="text-4xl block mb-3">📋</span>
             <p className="text-gray-500 text-sm">Nenhuma operação encontrada com os filtros aplicados.</p>
           </div>
         ) : (
@@ -74,7 +67,6 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
               key={op.id}
               className={`p-4 border-b border-gray-100 last:border-b-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
             >
-              {/* Company + UF */}
               <div className="flex items-start justify-between gap-2 mb-1">
                 <p className="text-sm font-semibold text-gray-900 leading-tight line-clamp-2">
                   {op.cliente}
@@ -84,12 +76,10 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
                 </span>
               </div>
 
-              {/* Setor + Date */}
               <p className="text-xs text-gray-500 mb-2 truncate">
                 {op.setorBndes || '—'} · {op.dataDaContratacao ? op.dataDaContratacao.split('T')[0] : '—'}
               </p>
 
-              {/* Value + Situation */}
               <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="text-sm font-bold text-gray-800">{BRL(op.valorContratadoReais)}</span>
                 {op.situacaoDoContrato ? (
@@ -101,25 +91,24 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
                 )}
               </div>
 
-              {/* Actions */}
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => onVer(op.id)}
                   className="text-blue-600 hover:text-blue-800 text-xs font-medium transition"
                 >
-                  👁 Ver
+                  Ver
                 </button>
                 <button
                   onClick={() => onEditar(op.id)}
                   className="text-gray-600 hover:text-gray-800 text-xs font-medium transition"
                 >
-                  ✏️ Editar
+                  Editar
                 </button>
                 <button
                   onClick={() => onExcluir(op.id)}
                   className="text-red-600 hover:text-red-800 text-xs font-medium transition"
                 >
-                  🗑 Excluir
+                  Excluir
                 </button>
               </div>
             </div>
@@ -127,10 +116,8 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
         )}
       </div>
 
-      {/* ── DESKTOP: table (hidden below md) ──────────────────────────────── */}
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-sm">
-          {/* Header */}
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
               {['#', 'Empresa', 'UF', 'Setor BNDES', 'Valor Contratado', 'Data', 'Situação', 'Ações'].map(
@@ -146,14 +133,12 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
             </tr>
           </thead>
 
-          {/* Body */}
           <tbody className="divide-y divide-gray-100">
             {loading ? (
               Array.from({ length: 6 }).map((_, i) => <SkeletonRow key={i} />)
             ) : isEmpty ? (
               <tr>
                 <td colSpan={8} className="px-4 py-16 text-center">
-                  <span className="text-4xl block mb-3">📋</span>
                   <p className="text-gray-500 text-sm">
                     Nenhuma operação encontrada com os filtros aplicados.
                   </p>
@@ -185,13 +170,13 @@ export default function OperacaoTable({ operacoes, loading, onVer, onEditar, onE
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <button onClick={() => onVer(op.id)} className="text-blue-600 hover:text-blue-800 transition text-xs font-medium">
-                        👁 Ver
+                        Ver
                       </button>
                       <button onClick={() => onEditar(op.id)} className="text-gray-600 hover:text-gray-800 transition text-xs font-medium">
-                        ✏️ Editar
+                        Editar
                       </button>
                       <button onClick={() => onExcluir(op.id)} className="text-red-600 hover:text-red-800 transition text-xs font-medium">
-                        🗑 Excluir
+                        Excluir
                       </button>
                     </div>
                   </td>

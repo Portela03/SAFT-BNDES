@@ -1,4 +1,4 @@
-import type { FiltroValues } from '../viewmodels/useOperacoesViewModel'
+﻿import type { FiltroValues } from '../viewmodels/useOperacoesViewModel'
 
 const UFS = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
@@ -27,7 +27,6 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-wrap gap-4 items-end">
-      {/* UF select */}
       <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Estado (UF)</label>
         <select
@@ -44,7 +43,6 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
         </select>
       </div>
 
-      {/* Setor BNDES */}
       <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Setor BNDES</label>
         <input
@@ -56,7 +54,6 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
         />
       </div>
 
-      {/* Valor mínimo */}
       <div className="w-full sm:w-auto">
         <label className="block text-xs font-medium text-gray-600 mb-1">Valor mínimo (R$)</label>
         <input
@@ -70,7 +67,6 @@ export default function FiltroBar({ values, onChange, onFilter, onClear, loading
         />
       </div>
 
-      {/* Actions */}
       <div className="flex gap-2 w-full sm:w-auto">
         <button
           onClick={onFilter}

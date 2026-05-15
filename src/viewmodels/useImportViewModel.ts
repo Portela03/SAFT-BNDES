@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+﻿import { useState, useRef } from 'react'
 import type { RefObject, DragEvent, ChangeEvent } from 'react'
 import { importarCsv, importarDoCkan } from '../api/operacaoApi'
 import type { ImportResult } from '../types/Operacao'
