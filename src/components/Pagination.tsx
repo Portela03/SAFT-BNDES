@@ -34,9 +34,9 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
     'min-w-[36px] h-9 px-2 rounded-md text-sm font-medium transition flex items-center justify-center'
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-white rounded-b-xl">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 border-t border-gray-200 bg-white rounded-b-xl">
       {/* Info text */}
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 text-center sm:text-left">
         Mostrando{' '}
         <span className="font-medium text-gray-700">{from.toLocaleString('pt-BR')}</span>
         {' – '}
@@ -47,7 +47,7 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
       </p>
 
       {/* Buttons */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center justify-center gap-1">
         {/* Previous */}
         <button
           disabled={page === 0}
@@ -57,26 +57,33 @@ export default function Pagination({ page, totalPages, totalElements, size, onPa
           ← Anterior
         </button>
 
-        {/* Page numbers */}
-        {items.map((item, idx) =>
-          item === '...' ? (
-            <span key={`dot-${idx}`} className="px-1 text-gray-400 text-sm select-none">
-              …
-            </span>
-          ) : (
-            <button
-              key={item}
-              onClick={() => onPageChange(item as number)}
-              className={`${btnBase} border ${
-                item === page
-                  ? 'bg-blue-700 text-white border-blue-700'
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              {(item as number) + 1}
-            </button>
-          ),
-        )}
+        {/* Page numbers — hidden on mobile */}
+        <div className="hidden sm:flex items-center gap-1">
+          {items.map((item, idx) =>
+            item === '...' ? (
+              <span key={`dot-${idx}`} className="px-1 text-gray-400 text-sm select-none">
+                …
+              </span>
+            ) : (
+              <button
+                key={item}
+                onClick={() => onPageChange(item as number)}
+                className={`${btnBase} border ${
+                  item === page
+                    ? 'bg-blue-700 text-white border-blue-700'
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {(item as number) + 1}
+              </button>
+            ),
+          )}
+        </div>
+
+        {/* Page indicator — mobile only */}
+        <span className="sm:hidden px-3 text-sm text-gray-600 font-medium">
+          {page + 1} / {totalPages}
+        </span>
 
         {/* Next */}
         <button
